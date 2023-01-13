@@ -1,11 +1,8 @@
 const Restaurant = require('../models/restaurant.model');
-
 //---------------------------------INPUT---------------------------------
 
-const getRestaurants = async(req,res,next) => {
-    try {
-        const {id} = req.query;
-        
+const getRestaurants = async(req, res) => {
+    try {        
         const allRestaurants = await Restaurant.find();
         // const allRestaurantsMap = allRestaurants.map((item)=> {return {
         //     _id: item._id,
@@ -26,7 +23,7 @@ const getRestaurants = async(req,res,next) => {
 const getRestaurantById = async(req, res) => {
     try {
         const {id} = req.params;
-        const myRestaurant = await Restaurant.findById(id);
+        const myRestaurant = await Restaurant.findById(id).populate('chefs');
         return res.status(200).json(myRestaurant)
     } catch (error) {
         return res.status(500).json(error);

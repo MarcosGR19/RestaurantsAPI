@@ -6,7 +6,8 @@ const chefSchema = mongoose.Schema(
     {
         name: {type:'String', required:true},
         nationality: {type:'String', required:true},
-        michelinStars: {type:'Number'}
+        michelinStars: {type:'Number'},
+        dishes: [{type:'String', required:true}]
     },
     {timestamps:true}
 );

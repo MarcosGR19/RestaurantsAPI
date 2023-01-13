@@ -8,7 +8,7 @@ const restaurantSchema = mongoose.Schema(
         city: {type:'String', required:true},
         foundationYear: {type:'Number'},
         restaurantType: {type:'String'},
-        chefs: [{type:'String'}]//[ {type: restaurantSchema.Types.ObjectId, ref: 'chef'}]
+        chefs: [ {type: mongoose.Schema.Types.ObjectId, ref: 'chef'}]
     },
     {timestamps:true}
 );

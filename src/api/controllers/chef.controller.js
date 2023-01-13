@@ -33,8 +33,8 @@ const getChefById = async(req, res) => {
 
 const postChef = async (req,res) => {
     try {
-        const {name,nationality,michelinStars} = req.body;
-        const newChef = new Chef({name,nationality,michelinStars});
+        const {name,nationality,michelinStars,dishes} = req.body;
+        const newChef = new Chef({name,nationality,michelinStars,dishes});
         const inserted = await newChef.save();
         res.status(201).json(inserted)
     } catch (error) {

@@ -4,7 +4,6 @@ const {
     getRestaurantById,
     postRestaurant,
     postRestaurants,
-    postManyRestaurants,
     putRestaurant,
     deleteRestaurant,
 } = require('../controllers/restaurant.controllers')
