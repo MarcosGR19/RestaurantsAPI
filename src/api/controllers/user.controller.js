@@ -24,7 +24,7 @@ const register = async(req, res, next) => {
         }
         newUser.password = bcrypt.hashSync(newUser.password, 10);   //Encriptamos nuestra contraseña para que no nos la puedan robar
         const createdUser = await newUser.save();
-        return res.status(200).json(createdUser)
+        return res.status(200).json(createdUser);
     } catch (error) {
         return res.status(500).json(error);
     }
