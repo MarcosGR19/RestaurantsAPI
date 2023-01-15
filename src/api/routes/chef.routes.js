@@ -8,6 +8,7 @@ const {
     deleteChef,
 } = require('../controllers/chef.controller')
 
+const {isAuth} = require('../middleware/auth');
 //---------------------------------INPUT---------------------------------
 
 const router = express.Router();
@@ -17,14 +18,14 @@ router.get('/', getChefs);
 router.get('/:id', getChefById);
 
 //metodos POST
-router.post('/', postChef);
-router.post('/insertMany', postChefs);
+router.post('/',[isAuth], postChef);
+router.post('/insertMany',[isAuth], postChefs);
 
 //metodos PUT
-router.put('/:id', putChef);
+router.put('/:id',[isAuth], putChef);
 
 //metodos DELETE
-router.delete('/:id', deleteChef);
+router.delete('/:id',[isAuth], deleteChef);
 
 //---------------------------------OUTPUT---------------------------------
 module.exports = router;

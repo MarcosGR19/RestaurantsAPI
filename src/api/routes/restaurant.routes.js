@@ -6,8 +6,9 @@ const {
     postRestaurants,
     putRestaurant,
     deleteRestaurant,
-} = require('../controllers/restaurant.controllers')
+} = require('../controllers/restaurant.controllers');
 
+const {isAuth} = require('../middleware/auth');
 //---------------------------------INPUT---------------------------------
 const router = express.Router();
 
@@ -18,14 +19,14 @@ router.get('/', getRestaurants);
 router.get('/:id', getRestaurantById);
 
 //metodos POST
-router.post('/', postRestaurant);
-router.post('/insertMany', postRestaurants);
+router.post('/',[isAuth], postRestaurant);
+router.post('/insertMany',[isAuth], postRestaurants);
 
 //metodos PUT
-router.put('/:id', putRestaurant);
+router.put('/:id',[isAuth], putRestaurant);
 
 //metodos DELETE
-router.delete('/:id', deleteRestaurant);
+router.delete('/:id',[isAuth], deleteRestaurant);
 
 
 //---------------------------------OUTPUT---------------------------------
